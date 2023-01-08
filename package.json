@@ -1,21 +1,34 @@
 {
-	"name": "docker-express-mariadb",
-	"version": "1.0.0",
-	"main": "index.js",
-	"repository": "git@github.com:willfong/docker-express-mariadb.git",
-	"author": "Will Fong <willfong@hey.com>",
-	"license": "MIT",
-	"scripts": {
-		"start": "node -r dotenv/config index.mjs",
-		"dev": "nodemon -r dotenv/config index.mjs"
-	},
-	"dependencies": {
-		"dotenv": "^16.0.3",
-		"express": "^4.18.2",
-		"mariadb": "^3.0.2",
-		"morgan": "^1.10.0"
-	},
-	"devDependencies": {
-		"nodemon": "^2.0.20"
-	}
+  "name": "docker-express-mariadb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:willfong/docker-express-mariadb.git",
+  "author": "Will Fong <willfong@hey.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config index.mjs",
+    "dev": "nodemon -r dotenv/config index.mjs",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mariadb": "^3.0.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "nodemon": "^2.0.20",
+    "prettier": "2.8.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
 }
