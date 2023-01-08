@@ -1,0 +1,20 @@
+services:
+  app:
+    container_name: dem-app
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      MARIADB_HOST: db
+      MARIADB_PORT: 3306
+      MARIADB_USER: root
+      MARIADB_PASS: rootpass
+      MARIADB_CONN: 10
+  db:
+    container_name: dem-mariadb
+    image: mariadb:10.9
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass

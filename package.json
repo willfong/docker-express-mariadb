@@ -1,0 +1,21 @@
+{
+	"name": "docker-express-mariadb",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:willfong/docker-express-mariadb.git",
+	"author": "Will Fong <willfong@hey.com>",
+	"license": "MIT",
+	"scripts": {
+		"start": "node -r dotenv/config index.mjs",
+		"dev": "nodemon -r dotenv/config index.mjs"
+	},
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"mariadb": "^3.0.2",
+		"morgan": "^1.10.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.20"
+	}
+}
