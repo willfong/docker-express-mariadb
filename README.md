@@ -35,7 +35,3 @@ Remember to use `127.0.0.1` instead of `localhost` for the HOST.
 ### Not Using Database ORM
 
 Our primary database is the RDBS MariaDB. We don't want to use a separate library to manage database operations (migrations).
-
-```
-
-```
