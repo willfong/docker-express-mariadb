@@ -17,6 +17,7 @@ Local environment setup:
 ```shell
 MARIADB_HOST=127.0.0.1
 MARIADB_PORT=3306
+MARIADB_DATABASE=test
 MARIADB_USER=root
 MARIADB_PASS=rootpass
 MARIADB_CONN=10
