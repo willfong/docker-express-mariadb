@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      MARIADB_HOST: mariadb
+      MARIADB_HOST: dem-mariadb
       MARIADB_PORT: 3306
       MARIADB_DATABASE: test
       MARIADB_USER: root
@@ -23,6 +23,7 @@ services:
     volumes:
       - "./schema.sql:/docker-entrypoint-initdb.d/schema.sql"
   redis:
+    container_name: dem-redis
     image: redis:alpine
     ports:
       - "6379:6379"
