@@ -4,9 +4,10 @@
 
 1. Use Docker Compose to bring up the whole environment: `docker compose up`
 1. Check that the server is running: `curl localhost:3000`
+1. Use your web browser to check the frontend is working: `http://localhost:3000`
 1. Check that bad URLs are being handled nicely: `curl localhost:3000/this-doesnt-exist`
-1. Check that errors are being handled nicely: `curl localhost:3000/error`
-1. Check that the database connection is working: `curl localhost:3000/delete-me-mariadb-test`
+1. Check that errors are being handled nicely: `curl localhost:3000/api/error`
+1. Check that the database connection is working: `curl localhost:3000/api/delete-me-mariadb-test`
 
 ## Config
 
