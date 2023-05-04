@@ -1,8 +1,8 @@
 FROM node:18 AS frontend
 WORKDIR /app
-COPY frontend-react/package.json frontend-react/yarn.lock /app/
+COPY frontend-next/package.json frontend-next/yarn.lock /app/
 RUN yarn install
-COPY frontend-react/. /app
+COPY frontend-next/. /app
 RUN yarn build
 
 
@@ -13,6 +13,6 @@ RUN yarn install
 
 COPY api/. /app
 
-COPY --from=frontend /app/build/. /app/frontend/
+COPY --from=frontend /app/out/. /app/frontend/
 
 CMD ["yarn", "start"]
