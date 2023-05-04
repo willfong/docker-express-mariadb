@@ -8,6 +8,10 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(morgan("combined"));
 
+app.get("/alb-health-check", (req, res) => {
+  res.send(new Date());
+});
+
 app.use("/api", api);
 
 app.use(express.static('frontend'))

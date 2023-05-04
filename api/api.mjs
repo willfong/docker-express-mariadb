@@ -8,10 +8,6 @@ router.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-router.get("/alb-health-check", (req, res) => {
-  res.send(new Date());
-});
-
 router.get("/delete-me-mariadb-test", async (req, res) => {
   const query = "SELECT Host, User FROM mysql.user";
   const results = await DB.query(query);
