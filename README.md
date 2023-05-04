@@ -31,8 +31,41 @@ Remember to use `127.0.0.1` instead of `localhost` for the HOST.
 1. Docker MariaDB: `docker run -d --name mariadb -p 3306:3306 --env MARIADB_ROOT_PASSWORD=rootpass mariadb:10.9`
 1. Run `yarn dev`
 
+## AWS Deployment
+
+Replace `<your_profile_name>` with your AWS profile name. Replace `<repo>` with your repository name.
+
+### Pushing to ECR
+
+```sh
+AWS_PROFILE=<your_profile_name> aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 742334901973.dkr.ecr.ap-southeast-1.amazonaws.com
+docker build --platform=linux/amd64 -t <repo> .
+echo "Commit Hash: $(git rev-parse --short HEAD)" && docker tag <repo>:latest 742334901973.dkr.ecr.ap-southeast-1.amazonaws.com/<repo>:$(git rev-parse --short HEAD) && docker push 742334901973.dkr.ecr.ap-southeast-1.amazonaws.com/<repo>:$(git rev-parse --short HEAD)
+
+```
+
+### Deploy from ECR
+
+```sh
+ docker tag 742334901973.dkr.ecr.ap-southeast-1.amazonaws.com/<repo>:$(git rev-parse --short HEAD) 742334901973.dkr.ecr.ap-southeast-1.amazonaws.com/<repo>:production
+ docker push 742334901973.dkr.ecr.ap-southeast-1.amazonaws.com/<repo>:production
+```
+
+### Deploy to Production
+
+```sh
+AWS_PROFILE=<your_profile_name> AWS_REGION=ap-southeast-1 aws ecs update-service --cluster default --service <repo> --force-new-deployment
+```
+
+### View Logs
+
+```sh
+AWS_PROFILE=<your_profile_name> AWS_REGION=ap-southeast-1 aws logs tail /ecs/services/<repo> --follow
+
+
 ## Design Considerations
 
 ### Not Using Database ORM
 
 Our primary database is the RDBS MariaDB. We don't want to use a separate library to manage database operations (migrations).
+```
